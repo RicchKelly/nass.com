@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NEW ABIREM/AFOSU SENIOR HIGH</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/YFdx0LCW/NASS.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://i.ibb.co/YFdx0LCW/NASS.png" alt="School Logo">
+            <span>NASS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Admission <span style="font-size:0.8em;">&#9662;</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li class="dropdown">
+                        <a href="gallery.html">Gallery</a>
+                        <ul class="dropdown-content">
+                            <li><a href="gallery.html">Photo Gallery</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">About Us <span style="font-size:0.8em;">&#9662;</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="anthem.html">Our School Anthem</a></li>
+                    <li><a href="rules.html">Rules</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Contact Us</h1>
+    </div>
+
+    <!-- Contact Content -->
+    <section class="contact-page">
+        <!-- Contact Information -->
+        <div class="contact-info-section">
+            <h2>Get in Touch</h2>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>New Abirem/Afosu, Eastern Region</p>
+                    <p>Ghana, West Africa</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Numbers</h3>
+                    <p>Main Office: +233 240 374 372</p>
+                    <p>Emergency: +233  244 703 241</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>GPS  Address</h3>
+                    <p>General Inquiries:EX-0013-0136 </p>   
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Office Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
+                    <p>Saturday: 9:00 AM - 12:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div class="contact-form-section">
+            <h2>Send Us a Message</h2>
+            <div id="form-success" class="form-success" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <h3>Thank You!</h3>
+                <p>Your message has been sent successfully. We'll get back to you soon.</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="admission">Admission Query</option>
+                            <option value="academic">Academic Information</option>
+                            <option value="facilities">Facilities</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Type your message here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>Find Us</h2>
+            <div class="map-container">
+                <div style="position: relative;"><div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=new+abirem%2Fafosu+senior+high+school&output=embed"></iframe></div><a href="https://viralnado.net/" rel="noopener" target="_blank" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;">viralnado.net</a></div>
+            </div>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="social-section">
+            <h2>Connect With Us</h2>
+            <div class="social-links">
+                <a href="https://web.facebook.com/groups/705050411020925" class="social-link">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+               
+               
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/groups/705050411020925"><i class="fab fa-facebook"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NEW ABIREM/AFOSU SENIOR HIGH. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

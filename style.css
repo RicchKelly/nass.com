@@ -1,0 +1,93 @@
+/* tutorial overlay */
+// ... existing code ...
+#tutorial-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#tutorial-overlay.show {
+  display: flex;
+}
+
+#tutorial-overlay .tutorial-box {
+  position: relative;
+  background: #ffffff;
+  color: #111;
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: min(90vw, 360px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-family: inherit;
+}
+
+#tutorial-overlay .tutorial-skip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #f0f0f0;
+  color: #333;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#tutorial-overlay .tutorial-skip:hover {
+  background: #e4e4e4;
+}
+
+#tutorial-overlay .hand-pointer {
+  position: absolute;
+  font-size: 42px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  user-select: none;
+  pointer-events: none;
+  animation: handMove 9s ease-in-out infinite;
+}
+
+/* Simple path animation for the hand across the screen */
+@keyframes handMove {
+  0% {
+    transform: translate(15vw, 25vh) rotate(12deg) scale(1);
+    opacity: 1;
+  }
+  15% { transform: translate(15vw, 25vh) rotate(8deg) scale(0.98); }
+  20% { transform: translate(15vw, 25vh) rotate(10deg) scale(1); }
+
+  35% {
+    transform: translate(70vw, 20vh) rotate(6deg) scale(1);
+  }
+  40% { transform: translate(70vw, 20vh) rotate(6deg) scale(0.98); }
+  45% { transform: translate(70vw, 20vh) rotate(6deg) scale(1); }
+
+  60% {
+    transform: translate(50vw, 60vh) rotate(0deg) scale(1);
+  }
+  65% { transform: translate(50vw, 60vh) rotate(0deg) scale(0.98); }
+  70% { transform: translate(50vw, 60vh) rotate(0deg) scale(1); }
+
+  85% {
+    transform: translate(25vw, 65vh) rotate(-8deg) scale(1);
+  }
+  90% { transform: translate(25vw, 65vh) rotate(-8deg) scale(0.98); }
+  100% {
+    transform: translate(25vw, 65vh) rotate(-8deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #tutorial-overlay .hand-pointer {
+    animation: none;
+  }
+}
+// ... existing code ...

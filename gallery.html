@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - NEW ABIREM/AFOSU SENIOR HIGH</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/YFdx0LCW/NASS.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        body {
+            background: url('https://i.ibb.co/YFdx0LCW/NASS.png') center center fixed repeat;
+            background-size: 300px;
+            background-color: rgba(255, 255, 255, 0.95);
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            z-index: 0;
+        }
+        nav, .page-header, .gallery-section, footer {
+            position: relative;
+            z-index: 1;
+        }
+        .gallery-section {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: auto;
+        }
+        .gallery-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            padding: 0.75rem 1.25rem;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .filter-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #f8f8f8;
+        }
+        .teacher-info {
+            padding: 1rem;
+            text-align: center;
+        }
+        .teacher-info h3 {
+            margin: 0.5rem 0 0.25rem;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .teacher-info p {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://i.ibb.co/YFdx0LCW/NASS.png"alt="School Logo">
+            <span>NASS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Academics <span style="font-size:0.8em;">&#9662;</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">About Us <span style="font-size:0.8em;">&#9662;</span></a>
+                <ul class="dropdown-content">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="anthem.html">School Anthem</a></li>
+                    <li><a href="rules.html">School Rules</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="page-header">
+        <h1>Our Teachers & Prefects</h1>
+    </div>
+
+    <section class="gallery-section">
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="administration">Administration</button>
+            <button class="filter-btn" data-filter="science">Science</button>
+            <button class="filter-btn" data-filter="arts">Arts</button>
+            <button class="filter-btn" data-filter="business">Business</button>
+            <button class="filter-btn" data-filter="it">IT Department</button>
+            <button class="filter-btn" data-filter="prefects">Prefects</button>
+            <button class="filter-btn" data-filter="facilities">Facilities</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-container">
+            <!-- Dynamically injected cards -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/groups/705050411020925"><i class="fab fa-facebook"></i></a>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 NEW ABIREM/AFOSU SENIOR HIGH. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const people = [
+            {
+                name: "Mr. Fredrick Kwaku Owusu",
+                role: "Headmaster",
+                department: "administration",
+                image: "https://i.ibb.co/DDc0WC3j/IMG-20250219-WA0035.jpg"
+            
+            },
+            {
+                name: "Mr. Ernest Twum",
+                role: "Assist. Headmaster (Academics)",
+                department: "administration",
+                image: "https://i.ibb.co/15nKsLQ/IMG-20250514-WA0025.jpg"
+               
+            },
+
+            {
+                name: "Mad. Alice Abena Frempong",
+                role: "Assist. Headmaster (Administration)",
+                department: "administration",
+                image:"https://i.ibb.co/yFzvDC7Z/IMG-20250515-WA0024.jpg"
+                
+            },
+             {
+                name: "Mr. Bright Yeboah",
+                role: "Assist. Headmaster (Domestic)",
+                department: "administration",
+                image:"C:/Users/berna/Desktop/PROJECTS/school project/WhatsApp Image 2025-08-25 at 19.14.30_f96011f1.jpg"
+                
+            },
+            {
+                name: "Mr.Micheal Agyeman Attuafah",
+                role: "Dining Hall Master",
+                department: "science",
+                image:"https://i.ibb.co/j9154zGj/Whats-App-Image-2025-07-20-at-12-01-59-d415cd9b.jpg"
+             
+            },
+             {
+                name: "Mr. Charles",
+                role: "Chemistry Teacher",
+                department: "science",
+                image:"https://i.ibb.co/gLdmvYHc/Whats-App-Image-2025-07-28-at-13-38-14-0abb39dd.jpg"
+            },
+           
+           
+            {
+                name: "MR.douglas Addo Alimoh (oshoosho)  ",
+                role: "P.E Teacher",
+                department: "All",
+                image:"https://i.ibb.co/RTHMNPz5/Whats-App-Image-2025-07-28-at-13-38-13-bb84744b.jpg"
+               
+            },
+                     
+            
+            {
+                name: "Mr. Katakyie",
+                role: "Head of agric Science Department",
+                department: "science",
+                image: "https://i.ibb.co/5hDZrcp6/Mr-Katakyie.jpg"
+                
+            },
+            {
+                name: "Mr.Dominic Adu Bosompem ",
+                role: "Head of Mathematics Department",
+                department: "Mathematics",
+                image:"https://i.ibb.co/DgwLjdQR/Screenshot-2025-07-18-155545.png" 
+               
+            },
+             {
+                name: "Mrs. Cynthia Parku",
+                role: "Senior House Mistress",
+                department: "business",
+                image:"https://i.ibb.co/JFCrtqjy/Whats-App-Image-2025-07-18-at-15-51-27-735dfa32.jpg" 
+               
+            },
+             { 
+      name: "sir. Prince Authur ",
+      role: "jewery Teacher",
+      department: "arts",
+      image: "https://i.ibb.co/zh601Tpt/MG-9375.jpg"
+        
+  },
+            {
+                name: "Mr.Nana Yaw Bonsu",
+                role: "Head of Visual Arts Department",
+                department: "arts",
+                image: "https://i.ibb.co/4wMv9pqc/IMG-20250219-WA0044.jpg"
+                
+            },
+             { 
+                name: "Mr.Eugene Opoku ",
+                role: "Ghanaian Language Teacher",
+                department: "arts",
+                image: "https://i.ibb.co/h1TW1cTj/MG-9582.jpg"
+        
+            },
+             {
+                name: "Mr.Fredrick ",
+                role: "Entertainment Master",
+                department: "administration",
+                image: "https://i.ibb.co/4n6g0YG8/Whats-App-Image-2025-07-15-at-12-03-39-bfc44190.jpg"
+                    
+            },
+            
+            {
+                name: "Mr. Amo Afful",
+                role: "HOD. Buisness Department",
+                department: "business",
+                image:"https://i.ibb.co/8D2DB58L/MG-9446.jpg"
+            
+            },
+             {
+                name: "Mr. Johnson Frimpong",
+                role: "SRC Patron",
+                department: "Art",
+                image:"https://i.ibb.co/PGwp4WFf/Screenshot-20250715-112340-Tik-Tok.JPG"
+                
+            },
+             {
+                name: "Sir. Ike",
+                role: "Government Teacher",
+                department: "Art",
+                image: "https://i.ibb.co/C3mS34tY/Screenshot-20250715-112344-Tik-Tok.jpg"                
+            },
+            
+            
+             {
+                name: "Mad. Patience Agyeibea Agyapong",
+                role: "Home Economics teacher",
+                department: "Home Economics",
+                image:"https://i.ibb.co/tpBV7vqT/Screenshot-20250715-112333-Tik-Tok.jpg" 
+                
+            },
+            {
+                name: "Mad. Pepetual Mintson",
+                role: "CRS teacher",
+                department: "Arts",
+                image:"https://i.ibb.co/Fqmv9rfh/Screenshot-20250715-112319-Tik-Tok-copy.jpg" 
+                
+            },
+             {
+                name: "Mr. Francis Enyo",
+                role: "Core Mathematics Teacher",
+                department: "Mathematics",
+                image: "https://i.ibb.co/gMPMTbKz/MG-9464.jpg"
+                
+            },
+             {
+                name: "Mr. David Nornormekuadzi",
+                role: "English Teacher",
+                department: "arts",
+                image: "https://i.ibb.co/wZjK3pqX/0b4bfc59bb8409568b0b9f323d381782.webp"
+
+            },
+            
+           
+           
+            {
+    name: "Mr. Francis Nyarko",
+    role: "English Teacher",
+    department: "arts",
+    image: "https://i.ibb.co/hxHnyBWr/MG-9492.jpg"
+    
+},
+           
+            {
+                name: "Mr. Maxwell Mintah Adu-Twum",
+                role: "Government Teacher",
+                department: "Science",
+                image:"https://i.ibb.co/Myh5Wjn5/MG-9408.jpg"
+    
+            },
+            
+            {
+                name: "Mr. Ebenezer Akaglo",
+                role: "Elective ICT Teacher",
+                department: "it",
+                image: "https://i.ibb.co/0Rd4w7B3/IMG-20250219-WA0034.jpg"
+                
+            },
+            {
+                name: "Science Laboratory",
+                role: "Science Facilities",
+                department: "facilities",
+                image:"https://i.ibb.co/j9scRQRd/Whats-App-Image-2025-04-07-at-16-39-44-0e395833.jpg"
+            },
+            {
+                name: "Administration Block",
+                role: "Administration Facilities",
+                department: "facilities",
+                image:"https://i.ibb.co/HTb97jm4/Whats-App-Image-2025-04-03-at-18-59-21-5c1acc15.jpg"
+            },
+            {
+                name: "Assembly Hall",
+                role: "Assembly Facilities",
+                department: "facilities",
+                image:"https://i.ibb.co/XxLc4pVF/Whats-App-Image-2025-04-07-at-11-32-27-11d9c567.jpg"
+            },
+            {
+                name: "Dinning Hall",
+                role: "Dinning Facilities",
+                department: "facilities",
+                image:"https://i.ibb.co/dJ1DwN35/Whats-App-Image-2025-05-16-at-23-28-31-fe1cbce9.jpg"
+            },
+            {
+                name: "Computer Laboratory",
+                role: "IT Facilities",
+                department: "facilities",
+                image:"https://i.ibb.co/35CsTrBL/Whats-App-Image-2025-04-03-at-18-59-21-b4d515cd.jpg"
+            },
+            {
+                name: "School Field",
+                role: "School Park",
+                department: "facilities",
+                image:"https://i.ibb.co/fzBT5fbx/IMG-20250515-WA0020.jpg"
+            },
+            {
+                name: "Library Complex",
+                role: "Academic Facilities",
+                department: "facilities",
+                image:"https://i.ibb.co/6cfTv0Mv/Whats-App-Image-2025-05-16-at-23-39-04-92eddbda.jpg"
+            },
+            {
+                name: "Mr. Bernard Boamah Boateng (B³)",
+                role: "Physics Teacher",
+                department: "science",
+                image: "https://i.ibb.co/wX8R4YK/Untitled-2.jpg",
+                    
+            },
+             {
+                name: "Mr.Patric Ababio-Braimah",
+                role: "Physics Teacher",
+                department: "science",
+                image:"https://i.ibb.co/rRgqw9dK/Whats-App-Image-2025-07-18-at-14-44-17-486c6e9a.jpg",
+            
+            },
+            {
+                name: "Mr. Agyei Emmanuel",
+                role: "Elective Mathematics Teacher",
+                department: "science",
+                image:"https://i.ibb.co/xqCLyhLQ/IMG-20250613-WA0007.jpg",
+                    
+            },
+             {
+                name: "Mr. Nii Amartey Amarh",
+                role: "Elective Mathematics Teacher And S.U Patron",
+                department: "science",
+                image:"https://i.ibb.co/ycnCwPXp/Whats-App-Image-2025-07-18-at-14-48-03-48c158ad.jpg" ,
+                
+            },
+           
+           
+            {
+                name: "Mr. Seth Duffour ",
+                role: "social studies Teacher",
+                department: "science",
+                image: "https://i.ibb.co/QFd65b9R/IMG-20250219-WA0015.jpg",
+               
+            },
+             {
+                name: "Mr. Jacob Owiredu",
+                role: "Twi Teacher",
+                department: "arts",
+                image:"https://i.ibb.co/W4gc65qZ/06e302d5264998fd9167ab179d3caf64.webp",
+              
+            },
+             {
+                name: "Mrs. Eric Adofo (forgone)",
+                role: "Economics Teacher",
+                department: "business",
+                image: "https://i.ibb.co/cXhF4wgX/Chat-GPT-Image-Jun-30-2025-02-06-51-PM.png" ,
+                
+            },
+             {
+                name: "Mad. judith",
+                role: "Teacher",
+                department: "arts",
+                image: "https://i.ibb.co/hRZrPB5z/3bc1b4247913a82d547071c9485d683e.webp" ,
+              
+            },
+           
+            {
+                name: "Mr. Boateng Elisha",
+                role: "Integreted Science Teacher",
+                department: "science",
+                image:"https://i.ibb.co/ZzQM8kP3/MG-9444.jpg",
+      
+            }, 
+             {
+                name: "Mr.Daniel Obeng Opoku",
+                role: "Elective Biology Teacher",
+                department: "science",
+                image:"https://i.ibb.co/TqLVDn7M/IMG-20250729-101015-864.jpg",
+               
+            }, 
+              {
+                name: "Mr. Derrick Opoku Asante",
+                role: "IT Coordinator",
+                department: "Administration",
+                image:"https://i.ibb.co/rR5jTVzk/Screenshot-2025-07-18-160029.png",
+               
+            }, 
+            {
+                name: "Mr. Quansah Nimrod ",
+                role: "Elective Chemistry Teacher",
+                department: "science",
+                image: "https://i.ibb.co/cKwDPK8F/MG-9513.jpg",
+                
+            },
+
+            
+           
+
+            {
+                name: "Mr. Albert Sackey",
+                role: " Teacher",
+                department: "Visual arts",
+                image:"https://i.ibb.co/84z8XByv/IMG-20250515-WA0067.jpg",
+               
+            },
+            {
+                name: "Mr.Kenneth Lamptey",
+                role: "Senior House Master",
+                department: "Science",
+                image:"https://i.ibb.co/j9Sn0Y2n/Untitled-1.jpg",
+               
+            },
+            {
+                name: "Mr. Innocent Ofori",
+                role: "Integrated Science Teacher",
+                department: "Science",
+                image:"https://i.ibb.co/LDym0Wdd/IMG-20250219-WA0010.jpg" ,
+               
+            },
+            {
+                name: "Mr.Akwesi Blay",
+                role: "School Counseller",
+                department: "Administration",
+                image:"https://i.ibb.co/zWFtSyYc/IMG-20250219-WA0039.jpg" ,
+             
+            },
+           
+            {
+                name: "Mr.Rasford Adiobeng",
+                role: "Government Teacher",
+                department: "arts",
+                image: "https://i.ibb.co/FLJXkv9Y/MG-9399.jpg",
+              
+            },
+           
+            {
+     name: "Mr. Samuel Albert",
+     role: "HOD. Science Department",
+     department: "Science",
+     image:"https://i.ibb.co/RG7H2qrZ/MG-9458.jpg" ,
+     
+ },            
+  {
+     name: "Mr.Isaac Botchwey",
+     role: "Senior House Master",
+     department: "Arts",
+     image:"https://i.ibb.co/YTVCCLyY/Whats-App-Image-2025-07-19-at-01-26-55-78553a7d.jpg",
+  
+ },            
+ 
+ {
+     name: "Mad. Geogina Acquah-Harrison  ",
+     role: "Integrated Teacher",
+     department: "Science",
+     image:"https://i.ibb.co/LdCkgY8h/MG-9394.jpg",
+    
+ },
+
+           
+            {
+                name: "Mr. Ahyia",
+                role: "HOD. IT Department ",
+                department: "it",
+                image:"https://i.ibb.co/jv16hMxt/IMG-20250704-WA0021.jpg",
+                qualification: "BSc. Information Technology"
+            },
+            {
+                name: "Mr. Adams Othman",
+                role: "Computer Science Teacher",
+                department: "it",
+                image:"https://i.ibb.co/8D7wW0fP/Whats-App-Image-2025-06-24-at-10-10-29-36c8847a.jpg",
+               
+            },
+             {
+                name: "Mr.Ishmael .A. Setsoafia ",
+                role: "Elective-ICT Teacher",
+                department: "it",
+                image: "https://i.ibb.co/zTG6Zx60/MG-9448.jpg",
+                    
+             },
+            {
+                name: "Gideon Boadi  ",
+                role: "main Boys Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/7tmGYGWr/Whats-App-Image-2025-06-06-at-11-05-15-184eca9a1.jpg",
+                qualification: "Student Leadership"
+            },
+             {
+                name: "Ackon Wilberforce ",
+                role: "Assist. Boys Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/WpgJvtm5/Whats-App-Image-2025-06-06-at-12-01-08-39a9b9ee.jpg",
+                qualification: "Student Leadership"
+            },
+             {
+                name: "Serwaa Irene",
+                role: "main Girls Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/0yz12Shy/IMG-20250528-WA0041.jpg",
+                qualification: "Student Leadership"
+            },
+             {
+                name: "Mary Yeboah",
+                role: "Assist Protocol Girls Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/yc3VZc2c/Whats-App-Image-2025-06-06-at-12-01-31-69ab5017.jpg" ,
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Yeboah Francis Ephraim Danquah",
+                role: "Assist. Boys Prefect (protocol)",
+                department: "prefects",
+                image:"https://i.ibb.co/kgTk74w4/Whats-App-Image-2025-06-06-at-12-01-17-c203e5a8.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Abdul Karim Rashid ",
+                role: "main Day Boys Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/k2sy1Vyz/Whats-App-Image-2025-06-06-at-12-01-01-6809d60b.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Adu Gifty",
+                role: "main Day Girls Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/h19v9sqX/Whats-App-Image-2025-07-02-at-19-50-38-ada94136.jpg" ,
+                qualification: "Student Leadership"
+            },
+            {
+                name: " Okyere Getrude Oforiwaa",
+                role: "Assist. Girls Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/jvq5BQ1j/IMG-20250515-WA0074.jpg",
+                qualification: "Student Leadership"
+            },
+             {
+                name: "Ayifa Gilbert",
+                role: "Boys infermery Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/h1xP7Z86/Whats-App-Image-2025-06-06-at-12-01-11-65aedde6.jpg"  ,
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Comfort Frimpomaa ",
+                role: "Girls infermery Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/j9yjQnbK/Whats-App-Image-2025-06-27-at-15-04-35-15ff6382.jpg"  ,
+                qualification: "Student Leadership"
+            },
+           
+            {
+                name: "Sherriden Tetteh",
+                role: "main Girls chapline Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/Q3mnKV0h/Whats-App-Image-2025-06-06-at-12-01-28-21458f21.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Niniwaa Franses",
+                role: "Assist. Girls chapline Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/B5T4xwdY/IMG-20250617-WA0003.jpg" ,
+                qualification: "Student Leadership"
+            },
+            
+            {
+                name: " Adjei Emmanuel",
+                role: "main Boys Chapline Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/yB5K60HX/IMG-20250605-WA0048.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Appiah Prince",
+                role: "Assist. Boys Chapline Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/RT7dCc3h/IMG-20250605-WA0044.jpg",
+                qualification: "Student Leadership"
+            },
+            
+            
+           
+            {
+                name: "Samuel Yeboah",
+                role: "Entertainment Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/Q38Z79cf/20250703-135326.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Juliet Nkum Debrah",
+                role: "Assist. girls Entertainment Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/3ybgFVYy/Whats-App-Image-2025-07-16-at-13-40-41-7ace18b7.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Tyra Amponsah ",
+                role: "Entertainment Prefect",
+                department: "Main.girls Entertainment prefects",
+                image:"https://i.ibb.co/LDDc2rST/Whats-App-Image-2025-07-18-at-14-16-11-094397ee.jpg",
+                qualification: "Student Leadership"
+            },
+           
+            {
+                name: "Eric Dwamena",
+                role: "Assist.Boys Compound Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/b5nhNGcs/20250703-135402.jpg",
+                qualification: "Student Leadership"
+            },
+           
+            {
+                name: "Martha ",
+                role: "Assist.Girls Compound Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/95nnLj8/Whats-App-Image-2025-07-16-at-14-05-10-76561dec.jpg" ,
+                qualification: "Student Leadership"
+            },
+
+            {
+                name: "Amos Adade",
+                role: "Boys Library Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/9kpbvh6n/20250705-082922.jpg" ,
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Asante Ruth",
+                role: "Girls Library Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/7dDwjbd5/IMG-20250515-WA0078.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Apke Justice",
+                role: "Main. Boys Dining Hall Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/21KGRrwn/Whats-App-Image-2025-07-16-at-14-27-16-d557c0d2.jpg",
+                qualification: "Student Leadership"
+            },
+            {
+                name: "Akugli Emmanuel",
+                role: "Assist. Boys Dining Hall Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/PvpWsY9d/Whats-App-Image-2025-07-16-at-14-27-16-52fd53da.jpg",
+                qualification: "Student Leadership"
+            },
+        
+            {
+                name: "Amphosia",
+                role: "Main. Girls Dining Hall Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/wFxfxvrh/Whats-App-Image-2025-07-16-at-14-27-14-af0b82eb.jpg",
+                qualification: "Student Leadership"
+            },
+
+            {
+                name: "Mary ",
+                role: "Assist. Girls Dining Hall Prefect",
+                department: "prefects",
+                image:"https://i.ibb.co/39XCqg1g/Whats-App-Image-2025-07-16-at-14-05-15-a3d3b69f.jpg",
+                qualification: "Student Leadership"
+            }
+
+        ];
+
+        const galleryContainer = document.getElementById('gallery-container');
+
+        people.forEach(person => {
+            const card = document.createElement('div');
+            card.className = `gallery-item ${person.department}`;
+            card.innerHTML = `
+                <div class="gallery-card">
+                    <img src="${person.image}" alt="${person.name}" />
+                    <div class="teacher-info">
+                        <h3>${person.name}</h3>
+                        <p>${person.role}</p>
+                        ${person.qualification ? `<p>${person.qualification}</p>` : ''}
+                    </div>
+                </div>`;
+            galleryContainer.appendChild(card);
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filter = button.getAttribute('data-filter');
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.style.display = filter === 'all' || item.classList.contains(filter) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
